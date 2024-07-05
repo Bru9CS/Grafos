@@ -19,6 +19,10 @@ int main(){
     teste.printMatrix();
     cout << "\n\n";
     teste.printList();
+    cout << "\n\n";
+    teste.djikstra(8, 10);
+    cout << "\n\n";
+    teste.dfs(5);
 
     return 0;
 }

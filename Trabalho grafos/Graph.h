@@ -15,6 +15,9 @@ class Graph{
 
         void printMatrix();
         void printList();
+
+        void dfs(int vertex);
+        void djikstra(int start, int end);
 };
 
 #endif
