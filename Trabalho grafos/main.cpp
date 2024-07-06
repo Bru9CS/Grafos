@@ -22,7 +22,7 @@ int main(){
     cout << "\n\n";
     teste.djikstra(8, 10);
     cout << "\n\n";
-    teste.dfs(5);
+    teste.dfs(1);
 
     return 0;
 }

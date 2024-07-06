@@ -104,15 +104,21 @@ void depth(int vertex, int v, std::list<std::pair<int, int> > *adj, std::list<st
     //anota a profundidade, iniciando em 1
     num[v] = i++;
 
-    //para a busca se achar
-    if(v == vertex) return;
+    //para se for o primeiro
+    if(v == vertex){
+        return;
+    }
 
-    //percorre os 
+    //percorre os vertices
     for(auto u : adj[v]){
         int next = u.first;
-        if(num[next]){
-            e.push_back({v, next});
+        if(num[next] == 0){
+            e.push_back({ v, next });
             depth(vertex, next, adj, e, num, i);
+            //para a busca se achar
+            if(num[vertex] != 0){
+                return;
+            }
         }
     }
 }
@@ -120,7 +126,7 @@ void depth(int vertex, int v, std::list<std::pair<int, int> > *adj, std::list<st
 void Graph::dfs(int vertex)
 {
     //previne que o vertice procurado esteja fora do vetor
-    if(vertex < 0 || vertex > vertices.size()+1){
+    if(vertex < 0 || vertex > vertices.size()){
         std::cout << "Vértice de número fora do tamanho do vetor de vértices";
         return;
     }
@@ -156,9 +162,9 @@ void Graph::dfs(int vertex)
 
     //impressão do caminho
     if(num[vertex] != 1){
-        std::cout << "Econtrado com caminho:\n";
+        std::cout << "Econtrado com caminho percorrido:\n";
         for(std::list<std::pair<int, int> >::iterator it = path.begin(); it != path.end(); it++){
-            std::cout << it->first << " -> " << it->second << " ";
+            std::cout << it->first << "->" << it->second << " ";
         }
     }
     else{
